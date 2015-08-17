@@ -103,8 +103,7 @@ k = percentage2n(eigVals,0.9)
 eigValIndice=numpy.argsort(eigVals)            #对特征值从小到大排序
 k_eigValIndice=eigValIndice[-1:-(k+1):-1]   #最大的n个特征值的下标
 # Step 3: PCA with dimension reduction
-U = numpy.zeros((patch_side*patch_side,patch_side*patch_side))
-U[:,k_eigValIndice]=eigVects[:,k_eigValIndice] #最大的n个特征值对应的特征向量,一列为一个特征向量
+U=eigVects[:,k_eigValIndice] #最大的n个特征值对应的特征向量,一列为一个特征向量
 Xrot = numpy.dot(U.T,dataset)
 Xreco = numpy.dot(U,Xrot)
 visualize(Xreco,int(math.sqrt(num_patches)),patch_side)
